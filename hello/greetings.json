@@ -1,0 +1,6 @@
+
+{
+  "_comment": "Last line cannot have a comma(,) . Javascript can accept it, not JSON",
+  "en": "Hello",
+  "es": "Hola"
+}
