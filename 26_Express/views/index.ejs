@@ -1,7 +1,35 @@
 <html>
-    <head><link href="assets/style.css" type="text/css" rel="stylesheet" />
+    <head>
+      <link href="assets/style.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js">
+    </script>
+
     </head>
     <body>
-      Hello World!
+      <h1>Hello World!</h1>
+      <form name="Form1" method="post" action="/person">
+          First Name : <input type="text" name="firstname" /> <br />
+          Lastname : <input type="text" name="lastname" /> <br />
+
+          <input type="submit" value="Submit" />
+
+        </form>
+        <!-- <form name="Form2" method="post" data: JSON.stringify({firstname: 'rk', lastname: 'gade'}) contentType: 'application/json' action="/personjson">
+            First Name : <input type="text" name="firstname" /> <br />
+            Lastname : <input type="text" name="lastname" /> <br />
+
+            <input type="submit" value="Submit" />
+
+        </form> -->
+        <script>
+        $.ajax({
+          type: "POST",
+          url: "/personjson",
+          data: JSON.stringify({firstname: 'rk',
+            lastname: 'gade'}),
+          dataType: 'json',
+          contentType: 'application/json'
+            });</script>
     </body>
 </html>
