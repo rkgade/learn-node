@@ -10,6 +10,9 @@ var port = process.env.PORT || 5000 ;
 // how will style.css will get downloaded when requested?
 app.use('/assets', express.static(__dirname+'/public'));
 
+// Set View Engine ( Template Engine)
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs')
 // own middleware
 // loggers can help here.
 app.use('/', function(req, res, next){
@@ -19,8 +22,7 @@ app.use('/', function(req, res, next){
 });
 // several http methods exist in Express
 app.get('/', function(req, res) {
-
-    res.send('<html> <head> <link rel="stylesheet" type="text/css" href="assets/style.css"> </head> <body>Success </body></html>');
+    res.render('index');
 });
 
 // Passing variable via a route.
@@ -28,7 +30,7 @@ app.get('/', function(req, res) {
 // This also helps to poll data using URL.
 app.get('/person/:id', function(req, res) {
 
-    res.send('<html> <head></head> <body><h1>Person: '+ req.params.id+ ' </h1></body></html>');
+    res.render('person',{ID : req.params.id});
 });
 app.get('/api', function(req, res) {
   res.json({ firstname: 'Raj Kiran ', lastname: 'Gade'})
