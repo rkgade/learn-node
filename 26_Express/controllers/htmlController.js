@@ -7,13 +7,7 @@ module.exports= function(app){
   var jsonParser = bodyParser.json();
 
 
-  // own middleware
-  // loggers can help here.
-  app.use('/', function(req, res, next){
-   console.log('Response url'+ req.url);
-    // this means, run the next middleware.
-    next();
-  });
+
   // several http methods exist in Express
   app.get('/', function(req, res) {
       res.render('index');
